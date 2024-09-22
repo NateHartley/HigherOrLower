@@ -1,49 +1,62 @@
 ﻿using System.Globalization;
 
-public class ConsoleApp1
+public class HigherLower
 {
     
     private static void Main(string[] args)
     {
-        Random rnd = new Random();
-        Console.WriteLine(" ");
-        Console.WriteLine("Welcome to Higher or Lower!");
-        Console.WriteLine("The aim of the game is to guess if the next number will be higher or lower than the previous.");
-        Console.WriteLine(" ");
-        Console.WriteLine("Lets begin...");
-        Console.WriteLine(" ");
-        
-        int number1 = rnd.Next(10);
-        int number2 = rnd.Next(10);
-        Console.WriteLine("The computer picks a number between 0 and 10: "+number1);
-        Console.WriteLine("Will the next number be Higher (h) or Lower (l) than {0} ?",number1);
+        while(true) {
 
-        string guess = Console.ReadLine();
-        Console.WriteLine(">>>"+guess);
-                
-        if (number2 > number1)
-        {
-            // Higher Wins
-            string result1 = (guess == "h") ? "Correct!" : "You lose!";
-            Console.WriteLine(result1);
-            
-        } else if (number1 > number2)
-        {
-            // Lower Wins
-            string result2 = (guess == "l") ? "Correct!" : "You lose!";
-            Console.WriteLine(result2);
-        }
-        else
-        {
-            Console.WriteLine("numbers are the same");
-        }
+            int score = 0;
 
-        
-        // if guess is not h or l
-        
-        if (guess != "h" | guess != "l"){
-            Console.WriteLine("You have not picked h or l.");
-            System.Environment.Exit(0);
+            while(true) {
+                Random rnd = new Random();
+                int number1 = rnd.Next(10);
+                int number2 = rnd.Next(10);
+                Console.WriteLine("The computer is picking a number between 0 and 10...");
+                Console.WriteLine("Will the next number be Higher (h) or Lower (l) than {0} ?",number1);
+
+                string guess = Console.ReadLine();
+
+                // If guess is not h or l
+                if (guess != "h" & guess != "l"){
+                    Console.WriteLine("You have not picked h or l. Game over.");
+                    System.Environment.Exit(0);
+                }
+                        
+                if (number2 > number1) {
+                    // Higher Wins
+                    if (guess == "h") {
+                        Console.WriteLine("Correct! {0} is higher than {1}",number2,number1);
+                        Console.WriteLine("+100 added to your score");
+                        score += 100;
+                    } else {
+                        Console.WriteLine("Incorrect! {0} is not lower than {1}",number2,number1);
+                        Console.WriteLine("You finished the game with {0} points",score);
+                        break;
+                    }
+                } else if (number1 > number2) {
+                    // Lower Wins
+                    if (guess == "h") {
+                        Console.WriteLine("Incorrect! {0} is not lower than {1}",number2,number1);
+                        Console.WriteLine("You finished the game with {0} points",score);
+                        break;
+                    } else {
+                        Console.WriteLine("Correct! {0} is higher than {1}",number2,number1);
+                        Console.WriteLine("+100 added to your score");
+                        score += 100;
+                    }
+                }
+                else {
+                    Console.WriteLine("The numbers are the same! No score added.");
+                }
+            }
+
+            Console.WriteLine("Play again? (y/n) ");
+            string yn = Console.ReadLine();
+            if (yn == "n") {
+                System.Environment.Exit(0);
+            }
         }
     }
 }
