@@ -26,3 +26,7 @@ Run: `.\hl`
 `npm install prompt-sync`
 `cd JavaScript`
 `node hl.js`
+
+### Java
+`cd Java`
+`javac hl.java; java hl`
