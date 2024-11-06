@@ -29,4 +29,8 @@
 
 ### Java
 `cd Java`<br>
-`javac hl.java; java hl`
+`javac hl.java; java hl`<br>
+
+### Go
+`cd Go`<br>
+`go run hl.go`<br>
