@@ -2,7 +2,7 @@
 
 Made for the purposes of practicing new languages.
 
-Higher or Lower is a simple game playable in the terminal. The program will pick a random number between 1 and 10, you have to guess if the next random number will be higher or lower than the current. If you guess correctly, you're awarded points and the game continues. Else, the game ends and displays your final score.
+Higher or Lower is a simple game playable in the terminal. The program will pick a random number between 1 and 10, you have to guess if the next random number will be higher or lower than the current. If you guess correctly, you're awarded points and the game continues. Else, the game ends and your final score is displayed.
 
 ### Python
 ```
