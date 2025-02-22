@@ -1,36 +1,52 @@
 # Collection of Higher or Lower games
 
-## How to compile/run
+Made for the purposes of practicing new languages.
+
+Higher or Lower is a simple game playable in the terminal. The program will pick a random number between 1 and 10, you have to guess if the next random number will be higher or lower than the current. If you guess correctly, you're awarded points and the game continues. Else, the game ends and displays your final score.
 
 ### Python
-`cd Python`<br>
-`python ./hl.py`
+```
+cd Python
+python3 hl.py
+```
 
 ### C
-[Install gnu gcc compiler](https://www.codewithharry.com/blogpost/how-to-install-gnu-gcc-compiler-on-windows/)<br>
-`cd C`<br>
-`gcc hl.c -o hl`<br>
-`.\hl`
+```
+cd C
+gcc hl.c
+./a.out
+```
 
 ### Rust
-`cd Rust/hl`<br>
-`cargo build`<br>
-`cargo run`
+```
+cd Rust/hl
+cargo build
+cargo run
+```
 
 ### C Sharp
-`cd C#/hl`<br>
-`dotnet build`<br>
-`dotnet run`
+```
+cd C#/hl
+dotnet build
+dotnet run
+```
 
 ### JavaScript
-`cd JavaScript`<br>
-`npm install prompt-sync`<br>
-`node hl.js`
+```
+cd JavaScript
+npm install prompt-sync
+node hl.js
+```
 
 ### Java
-`cd Java`<br>
-`javac hl.java; java hl`<br>
+```
+cd Java
+javac hl.java
+java hl
+```
 
 ### Go
-`cd Go`<br>
-`go run hl.go`<br>
+```
+cd Go
+go run hl.go
+```
