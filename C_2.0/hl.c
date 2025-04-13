@@ -20,24 +20,28 @@ void discard(char* input) {
 
 int main() {
 
-    // TODO: write SIZE vars in seperate function
+    int INTSIZE = sizeof(int);
+    // = 4 bytes
+
+    int STRINGSIZE = sizeof(char)+1;
+    // = 1 byte + 1 byte (null space)
     
     srand(time(NULL));
     // Setting seed for rand
 
-    int *rand_num1 = malloc(sizeof(int));
-    int *rand_num2 = malloc(sizeof(int));
+    int *rand_num1 = malloc(INTSIZE);
+    int *rand_num2 = malloc(INTSIZE);
     // Malloc returns a pointer, so the type needs to be int* not int
     // Size of an int is 4 bytes
 
-    char* usr_input = malloc(2);
+    char* usr_input = malloc(STRINGSIZE);
     // Allocated 2 bytes, 1 byte for the user input (h or l), and one byte for the null character. If we only set malloc to be 1 then only the null char will be stored there
     // Reserved a memory size of 2 on the heap for this var, which means that piece of memory will always be available for this var, however I can still write into another memory address if this var is greater that the allocated memory size
     // Prevention of buffer overflow does not happen during malloc, it happens when you use the var in other functions e.g. fgets
 
-    char* yes_no = malloc(sizeof(char)+1);
+    char* yes_no = malloc(STRINGSIZE);
 
-    int *score = calloc(1, sizeof(int));
+    int *score = calloc(1, INTSIZE);
     // calloc works the exact same as malloc but zeros the data at that memory address, whereas if you use malloc then immediately return whatever is in there, you might get random garbage
     // so here we can use it to instantly set the value of score to 0
 
@@ -61,7 +65,7 @@ int main() {
             printf("\nWill the second number be higher [h] or lower [l] than the first? \n");
             printf(">> ");
     
-            if (fgets(usr_input, 2, stdin) != NULL){
+            if (fgets(usr_input, STRINGSIZE, stdin) != NULL){
             // Takes in a user input from the standard input (terminal), last character appended is a null character '\0'
             // E.g. size = 5, input = 'hello', output of that var = 'hell\0', output in terminal will look like = 'hell'
             // Limited to a input size of 2 which is either 'h' or 'l' and the auto null character '\0'
@@ -115,7 +119,7 @@ int main() {
         printf("\nPlay again? (y/n) \n");
         printf(">>");
 
-        if (fgets(yes_no, sizeof(char)+1, stdin) != NULL){
+        if (fgets(yes_no, STRINGSIZE, stdin) != NULL){
             discard(yes_no);
         }
         printf("\n");
