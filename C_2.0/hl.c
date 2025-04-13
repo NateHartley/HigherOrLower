@@ -37,12 +37,19 @@ int main() {
 
     char* yes_no = malloc(sizeof(char)+1);
 
+    int *score = calloc(1, sizeof(int));
+    // calloc works the exact same as malloc but zeros the data at that memory address, whereas if you use malloc then immediately return whatever is in there, you might get random garbage
+    // so here we can use it to instantly set the value of score to 0
+
     while(1){
         printf("The program will pick two random numbers between 0 and 10... \n");
+        *score = 0;
 
         while(1){
 
-            // If score is greater than 1, include printf("The program is picking a new set of random numbers...")
+            if (*score > 0) {
+                printf("The program is picking a new set of random numbers...\n");
+            }
     
             *rand_num1 = rand() % 10 + 1;
             *rand_num2 = rand() % 10 + 1;
@@ -50,7 +57,6 @@ int main() {
     
             printf("The first number is: %d \n", *rand_num1);
             // Have to specify * before rand_num1 so that we are derefencing the pointer rand_num1 so we get the actual value stored at that memory address
-            printf("Debug rand_num2: %d \n", *rand_num2);
     
             printf("\nWill the second number be higher [h] or lower [l] than the first? \n");
             printf(">> ");
@@ -76,6 +82,8 @@ int main() {
                     // Need to dereference rand_num with * to get actual value
     
                     printf("Correct! The second number, %d, is higher than the first, %d \n", *rand_num2, *rand_num1);
+                    printf("+100 points\n");
+                    *score = *score + 100;
     
                 } else if (*rand_num1 > *rand_num2 && strcmp(usr_input, "h") == 0){
                     printf("Incorrect... The second number, %d, is lower than the first, %d \n", *rand_num2, *rand_num1);
@@ -83,6 +91,8 @@ int main() {
     
                 } else if (*rand_num1 > *rand_num2 && strcmp(usr_input, "l") == 0){
                     printf("Correct! The second number, %d, is lower than the first, %d \n", *rand_num2, *rand_num1);
+                    printf("+100 points\n");
+                    *score = *score + 100;
     
                 } else if (*rand_num1 < *rand_num2 && strcmp(usr_input, "l") == 0){
                     printf("Incorrect... The second number, %d, is higher than the first, %d \n", *rand_num2, *rand_num1);
@@ -90,6 +100,7 @@ int main() {
     
                 } else {
                     printf("They are the same!\n");
+                    printf("No points added\n");
                 }
             } else {
                 printf("This is not a valid input\n");
@@ -99,14 +110,15 @@ int main() {
     
         }
 
-        printf("\nGAME OVER - You finished the game with X points ");
+        printf("\nGAME OVER - You finished the game with %d points\n", *score);
 
-        printf("Play again? (y/n) \n");
+        printf("\nPlay again? (y/n) \n");
         printf(">>");
 
         if (fgets(yes_no, sizeof(char)+1, stdin) != NULL){
             discard(yes_no);
         }
+        printf("\n");
 
         if (strcmp(yes_no, "y") == 0 || strcmp(yes_no, "n") == 0) {
             if (strcmp(yes_no, "n") == 0) {
@@ -118,17 +130,13 @@ int main() {
             break;
         }
 
-        printf("yesno: %s \n", yes_no);
     }
-
-    
-
-    
-    
     
     free(usr_input);
     free(rand_num1);
     free(rand_num2);
+    free(yes_no);
+    free(score);
     // Free the variables once there is no more use for it to release its allocated memory and prevent a memory leak
 
     return 0;
