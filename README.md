@@ -17,18 +17,25 @@ gcc hl.c
 ./a.out
 ```
 
+### C 2.0
+```
+cd C_2.0
+gcc hl.c
+./a.out
+```
+
+### C#
+```
+cd C#/hl
+dotnet build
+dotnet run
+```
+
 ### Rust
 ```
 cd Rust/hl
 cargo build
 cargo run
-```
-
-### C Sharp
-```
-cd C#/hl
-dotnet build
-dotnet run
 ```
 
 ### JavaScript
